@@ -164,6 +164,17 @@ class GSVCapture():
       return dir
 
     def getImage(self, panoId, x, y, zoom,outdir):
+        taskdir = outdir[:-23]
+        location = taskdir + "pre_" + panoId + "/" + str(x) + "_" + str(y) + ".jpg"
+        
+        if os.path.isdir(taskdir + "pre_" + panoId + "/"):
+            if not os.path.isfile(location):
+                print(location)
+                return None
+            else:
+                with open(location, "rb") as fh:
+                    return BytesIO(fh.read())
+    
         url = "https://" + "geo0.ggpht.com/cbk?cb_client=maps_sv.tactile&authuser=0&hl=en&panoid=" + panoId + "&output=tile&x=" + str(x) + "&y=" + str(y) + "&zoom=" + str(zoom) + "&nbt&fover=2"
         outfile = outdir + "/" + str(x) + "_" + str(y) + ".jpg"
         #http = urllib3.PoolManager()
