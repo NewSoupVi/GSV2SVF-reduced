@@ -359,9 +359,10 @@ class GSVCapture():
         numtilesy = 2
         mosaicxsize = tilesize*numtilesx
         mosaicysize = tilesize*numtilesy
-        #start_time = time.time()
+        start_time = time.time()
         mosaic = Image.new("RGB", (mosaicxsize, mosaicysize), "black")
         blkpixels = 0
+
         for x in range(0, numtilesx):
             for y in range(0, numtilesy):
                  imageTile = self.getImage(panoid, x, y, 2,outdir)
@@ -377,9 +378,9 @@ class GSVCapture():
                     #print(blk2)
                  #img.save(outdir  + str(x) + "_" + str(y) + ".jpg")
                  mosaic.paste(img,(x*tilesize,y*tilesize,x*tilesize+tilesize,y*tilesize+tilesize))
-        #elapsed_time = time.time() - start_time
-        #print("(1) %s seconds ---" % elapsed_time)
-        #start_time = time.time()
+        elapsed_time = time.time() - start_time
+        print("(1) %s seconds ---" % elapsed_time)
+        start_time = time.time()
         xstart =  (512 - 128) / 2;
         xsize = mosaicxsize - xstart * 2;
         ysize = mosaicysize - (512 - 320);
@@ -389,9 +390,10 @@ class GSVCapture():
         mosaic.save(outdir + "mosaic.png")
         self.classify(outdir + "mosaic.png",outdir + "mosaic_classified.png")
         self.equirectangular2fisheye(outdir + "mosaic.png",outdir + "fisheye.png",False)
+        
+        elapsed_time = time.time() - start_time
+        print("(5) %s seconds ---" % elapsed_time)
         return self.equirectangular2fisheye(outdir + "mosaic_classified.png",outdir + "fisheye_classified.png",True)
-        #elapsed_time = time.time() - start_time
-        #print("(5) %s seconds ---" % elapsed_time)
         #start_time = time.time()
         #os.remove(outdir + "mosaic_classified.png")
 
