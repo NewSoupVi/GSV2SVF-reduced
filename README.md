@@ -1,3 +1,6 @@
+This is a modified version of GSV2SVF that can be started with a .bat script taking a task folder as a launch argument, and also looks for predownloaded images in that task folder. It is used by [SkyViewFactorTool](https://github.com/NewSoupVi/SkyViewFactorTool), a program that will automatically fetch GSV panoramas around a point and then automatically run GSV2SVF on all of them to extract their Sky View Factors and average them.
+
+# Original Readme
 
 ### 1.	Background
 GSV2SVF is designed to interactively calculate sky/tree/building view factors from Google Street View GSV) panoramas in Google Maps. In GSV2SVF, a GSV panorama is first classified at the pixel level into multiple classes including sky, tree and building, and then transformed into a hemispherical (fisheye) image. The sky, tree and building view factor respectively represents the areal proportion (in the range of [0,1]) of a fisheye image that is occupied by sky, tree and building pixels. A video is available at https://github.com/jian9695/GSV2SVF/blob/master/Video.mp4 and https://youtu.be/k00wCnuzuvE
